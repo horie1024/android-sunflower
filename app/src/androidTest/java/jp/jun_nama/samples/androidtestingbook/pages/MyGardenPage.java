@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.allOf;
 
 public class MyGardenPage {
 
-    public void goPlantList() {
+    public PlantListPage goPlantList() {
         ViewInteraction appCompatImageButton = onView(
                 allOf(withContentDescription("上へ移動"),
                         PageUtils.childAtPosition(
@@ -50,9 +50,10 @@ public class MyGardenPage {
                         2),
                         isDisplayed()));
         navigationMenuItemView.perform(click());
+        return new PlantListPage();
     }
 
-    public void assertPlanted(String plantName) {
+    public MyGardenPage assertPlanted(String plantName) {
         ViewInteraction textView = onView(
                 allOf(withId(R.id.plant_date), withText(Matchers.startsWith(plantName)),
                         PageUtils.childAtPosition(
@@ -61,5 +62,6 @@ public class MyGardenPage {
                                         0),
                                 1)));
         textView.check(matches(isDisplayed()));
+        return this;
     }
 }

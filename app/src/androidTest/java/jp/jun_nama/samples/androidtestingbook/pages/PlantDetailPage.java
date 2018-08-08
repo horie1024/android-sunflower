@@ -28,7 +28,7 @@ import static org.hamcrest.Matchers.not;
 
 public class PlantDetailPage {
 
-    public void goBackPlantList() {
+    public PlantListPage goBackPlantList() {
         ViewInteraction appCompatImageButton2 = onView(
                 allOf(withContentDescription("上へ移動"),
                         PageUtils.childAtPosition(
@@ -39,9 +39,10 @@ public class PlantDetailPage {
                                 1),
                         isDisplayed()));
         appCompatImageButton2.perform(click());
+        return new PlantListPage();
     }
 
-    public void assertAddButtonVisibility(boolean visible) {
+    public PlantDetailPage assertAddButtonVisibility(boolean visible) {
         ViewInteraction imageButton = onView(withId(R.id.fab));
         if (visible) {
             imageButton.check(matches(isDisplayed()));
@@ -49,9 +50,10 @@ public class PlantDetailPage {
             imageButton.check(matches(not(isDisplayed())));
 
         }
+        return this;
     }
 
-    public void addToMyGarden() {
+    public PlantDetailPage addToMyGarden() {
         ViewInteraction floatingActionButton = onView(
                 allOf(withId(R.id.fab),
                         PageUtils.childAtPosition(
@@ -61,5 +63,6 @@ public class PlantDetailPage {
                                 2),
                         isDisplayed()));
         floatingActionButton.perform(click());
+        return this;
     }
 }

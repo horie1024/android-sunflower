@@ -27,16 +27,17 @@ import static org.hamcrest.Matchers.allOf;
 
 public class PlantListPage {
 
-    public void showPlantDetail(String plantName) {
+    public PlantDetailPage showPlantDetail(String plantName) {
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.plant_list),
                         PageUtils.childAtPosition(
                                 withId(R.id.garden_nav_fragment),
                                 0)));
         recyclerView.perform(actionOnItem(hasDescendant(withText(plantName)), click()));
+        return new PlantDetailPage();
     }
 
-    public void goBackMyGarden() {
+    public MyGardenPage goBackMyGarden() {
         ViewInteraction appCompatImageButton3 = onView(
                 allOf(withContentDescription("上へ移動"),
                         PageUtils.childAtPosition(
@@ -47,5 +48,6 @@ public class PlantListPage {
                                 1),
                         isDisplayed()));
         appCompatImageButton3.perform(click());
+        return new MyGardenPage();
     }
 }
