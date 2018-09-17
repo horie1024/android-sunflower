@@ -86,7 +86,7 @@ jobs:
       - store_artifacts:
          path: ~/gsutil/
       - store_test_results:
-         path: ~/gsutil/
+         path: ~/gsutil/*.xml
 
   prepare_uat:
     working_directory: ~/code
