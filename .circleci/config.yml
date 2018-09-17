@@ -69,7 +69,7 @@ jobs:
               sudo gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
       - run:
           name: Run Compile
-          command: ./gradlew assembleDebugAndroidTest
+          command: ./gradlew assembleDebug assembleDebugAndroidTest
       - run:
           name: Test with Firebase Test Lab
           command: >
